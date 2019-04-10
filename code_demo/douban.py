@@ -23,15 +23,8 @@ for page_start in range(0, 100, 20):
         headers=headers,
         params=params
     )
-    # 方式一:直接转换json方法
-    # results = response.json()
-    # 方式二: 手动转换
-    # 获取字节串
-    content = response.content
-    # 转换成字符串
-    string = content.decode('utf-8')
-    # 把字符串转成python数据类型
-    results = json.loads(string)
+    # 直接用requests.json方法转化为python格式
+    results=response.json()
     # 解析结果
     for movie in results["subjects"]:
         print(movie["title"], movie["rate"])
